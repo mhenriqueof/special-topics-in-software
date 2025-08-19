@@ -1,0 +1,1 @@
+Este repositório contém as atividades que vou desenvolver na disciplina **Tópicos Especiais em Software**, do 4º período do curso de Ciência da Computação.
