@@ -12,17 +12,22 @@ class DiceRoller():
         for roll in rolls:
             print(f"[{roll}] ", end='')
         
-    def roll_3d6(self) -> int:
+    def roll_3d6(self, show: bool = True) -> int:
         """Rolls 3d6, shows each die and returns the sum of them."""
         rolls = self._roll_dice(3)
-        self._show_rolls(rolls)  
-        return sum(rolls)
+        total = sum(rolls)
+        if show: 
+            self._show_rolls(rolls)
+            print(f"= {total}")
+        return total
     
     def roll_4d6_drop_lowest(self) -> int:
         """Rolls 4d6, shows each die and returns the sum of the 3 highest."""
         rolls = self._roll_dice(4)
         self._show_rolls(rolls)
-        print(f"(One die [{min(rolls)}] will be discarded.)")
+        print(f"(One die [{min(rolls)}] will be discarded) ", end='')
         rolls.remove(min(rolls))
-        return sum(rolls)
+        total = sum(rolls)
+        print(f"= {total}")
+        return total
     
