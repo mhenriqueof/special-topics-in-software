@@ -12,13 +12,12 @@ class DiceRoller():
     def rolls(self, rolls: list[int]) -> None:
         self.__rolls = rolls
     
-    def roll(self, notation: str) -> list[int]:
+    def roll(self, notation: str) -> None:
         """Returns a list with random values according to the dice notation."""
         split = notation.split('d')
         number_of_dice = int(split[0])
         faces_each_die = int(split[1])
         self.rolls = [randint(1, faces_each_die) for _ in range(number_of_dice)]
-        return self.rolls
     
     def show_rolls(self) -> None:
         """Shows the rolled dice."""
