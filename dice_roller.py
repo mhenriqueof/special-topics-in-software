@@ -1,33 +1,27 @@
 from random import randint
 
-class DiceRoller():    
+class DiceRoller(): 
     """Class responsible for rolling dice for the attributes generation."""
-    def _roll_dice(self, number_of_dice: int) -> list[int]:
-        """Returns a list with random values from 1 to 6."""
-        return [randint(1, 6) for _ in range(number_of_dice)]
-    
-    def _show_rolls(self, rolls: list) -> None:
-        """Shows the rolled dice."""
-        print("Rolled dice: ", end='')
-        for roll in rolls:
-            print(f"[{roll}] ", end='')
+    def __init__(self):
+        self.__rolls = []
         
-    def roll_3d6(self, show: bool = True) -> int:
-        """Rolls 3d6, shows each die and returns the sum of them."""
-        rolls = self._roll_dice(3)
-        total = sum(rolls)
-        if show: 
-            self._show_rolls(rolls)
-            print(f"= {total}")
-        return total
+    @property
+    def rolls(self) -> list[int]:
+        return self.__rolls
+    @rolls.setter
+    def rolls(self, rolls: list[int]) -> None:
+        self.__rolls = rolls
     
-    def roll_4d6_drop_lowest(self) -> int:
-        """Rolls 4d6, shows each die and returns the sum of the 3 highest."""
-        rolls = self._roll_dice(4)
-        self._show_rolls(rolls)
-        print(f"(One die [{min(rolls)}] will be discarded) ", end='')
-        rolls.remove(min(rolls))
-        total = sum(rolls)
-        print(f"= {total}")
-        return total
+    def roll(self, notation: str) -> list[int]:
+        """Returns a list with random values according to the dice notation."""
+        split = notation.split('d')
+        number_of_dice = int(split[0])
+        faces_each_die = int(split[1])
+        self.rolls = [randint(1, faces_each_die) for _ in range(number_of_dice)]
+        return self.rolls
     
+    def show_rolls(self) -> None:
+        """Shows the rolled dice."""
+        print("\nRolled dice: ", end='')
+        for roll in self.rolls:
+            print(f"[{roll}] ", end='')
