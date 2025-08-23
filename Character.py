@@ -1,26 +1,24 @@
 class Character:
     """Represents a character with their name and attributes."""
     def __init__(self, name: str, attributes: dict[str, int]):
-        self._name: str = name
-        self._attributes: dict[str, int] = attributes
+        self.__name: str = name
+        self.__attributes: dict[str, int] = attributes
         
-    # _name
+    # __name
     @property
     def name(self) -> str:
-        return self._name
-    
+        return self.__name
     @name.setter
     def name(self, name: str) -> None:
-        self._name = name
+        self.__name = name
         
-    # _attributes
+    # __attributes
     @property
     def attributes(self) -> dict[str, int]:
-        return self._attributes
-    
+        return self.__attributes
     @attributes.setter
     def attributes(self, attributes: dict[str, int]) -> None:
-        self._attributes = attributes
+        self.__attributes = attributes
     
     # General methods
     def show_attributes(self) -> None:
