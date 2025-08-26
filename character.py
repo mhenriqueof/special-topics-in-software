@@ -1,8 +1,15 @@
 class Character:
     """Represents a character with their name and attributes."""
-    def __init__(self, name: str, attributes: dict[str, int]):
+    def __init__(self, name: str):
         self.__name: str = name
-        self.__attributes: dict[str, int] = attributes
+        self.__attributes = {
+            "STR (Strength)": 0,
+            "DEX (Dexterity)": 0,
+            "CON (Constitution)": 0,
+            "INT (Intelligence)": 0,
+            "WIS (Wisdom)": 0,
+            "CHA (Charisma)": 0
+            }
         
     # __name
     @property
@@ -23,9 +30,16 @@ class Character:
     # General methods
     def show_attributes(self) -> None:
         """Shows the character's attributes and their values."""
-        print(f"{self.name} <> Attributes")
+        print()
+        print("-" * 25)
         for attribute, value in self.attributes.items():
-            print(f"{value:>2} - {attribute}")
+            print(f"{value:>2} <> {attribute}")
+        print("-" * 22)
+        print()
+    
+    def reset_attributes(self) -> None:
+        for attribute in self.attributes:
+            self.attributes[attribute] = 0
 
     # Magic methods
     def __str__(self) -> str: # "Readable" representation
