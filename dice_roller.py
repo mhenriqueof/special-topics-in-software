@@ -21,6 +21,6 @@ class DiceRoller():
     
     def show_rolls(self) -> None:
         """Shows the rolled dice."""
-        print("\nRolled dice: ", end='')
+        print("Rolled dice: ", end='')
         for roll in self.rolls:
             print(f"[{roll}] ", end='')
