@@ -10,6 +10,9 @@ class Character:
             "WIS (Wisdom)": 0,
             "CHA (Charisma)": 0
             }
+        self.__race = None
+        self.__classs = None # "classs" to avoid class of Python
+        self.__subclasss = None
         
     # __name
     @property
@@ -26,6 +29,30 @@ class Character:
     @attributes.setter
     def attributes(self, attributes: dict[str, int]) -> None:
         self.__attributes = attributes
+        
+    # __race
+    @property
+    def race(self):
+        return self.__race
+    @race.setter
+    def race(self, race) -> None:
+        self.__race = race
+        
+    # __classs
+    @property
+    def classs(self):
+        return self.__classs
+    @classs.setter
+    def classs(self, classs) -> None:
+        self.__classs = classs
+
+    # __subclasss
+    @property
+    def subclass(self):
+        return self.__subclass
+    @subclass.setter
+    def subclass(self, classs) -> None:
+        self.__subclass = classs
     
     # General methods
     def show_attributes(self) -> None:
@@ -38,6 +65,7 @@ class Character:
         print()
     
     def reset_attributes(self) -> None:
+        """Changes all attributes values to 0"""
         for attribute in self.attributes:
             self.attributes[attribute] = 0
 
