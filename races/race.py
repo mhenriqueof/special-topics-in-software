@@ -1,18 +1,11 @@
 from abc import ABC, abstractmethod
-from enum import Enum
-
-class Alignment(Enum):
-    ANY = 'Any'
-    NEUTRAL = 'Neutral'
-    ORDER = 'Order'
 
 class Race(ABC):
     """Abstract class for all races."""
-    def __init__(self, movement: int, infravision: int, alignment: Alignment):
+    def __init__(self, movement: int, infravision: int, alignment: str) -> None:
         self.__movement = movement
         self.__infravision = infravision
         self.__alignment = alignment
-   
         
     @property
     def movement(self) -> int:
@@ -23,24 +16,18 @@ class Race(ABC):
         return self.__infravision
 
     @property
-    def alignment(self) -> Alignment:
+    def alignment(self) -> str:
         return self.__alignment
     
-
     @abstractmethod
-    def overview(self) -> str:
-        """Returns a brief description of the race (origins, personality and adventures)."""
+    def background(self) -> dict:
+        """Returns a dictionary with lore, personality and adventures of the race."""
         pass
     
     @abstractmethod
-    def talents(self) -> list[str]:
-        """Returns a list with all talents of the race (passive skills)."""
+    def talents(self) -> list[dict]:
+        """Returns a list of dictionaries with all talents of the race (passive skills)."""
         pass
 
-
     def __repr__(self) -> str:
-        return (f"{self.__class__.__name__}: "
-                f"movement={self.movement}, "
-                f"infravision={self.infravision}, "
-                f"alignment={self.alignment.value}")
-        
+        return self.__class__.__name__
