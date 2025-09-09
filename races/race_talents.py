@@ -11,7 +11,7 @@ class Talent(Enum):
     LEARNING = {"Learning": "Humans learn everything they set out to do much faster than other races. A human receives a 10% bonus on all experience (XP) gained."}
     MINERS = {"Miners": "For millennia, dwarves have learned from an early age to assess passages and the condition of walls and gates."}
     NATURAL_PERCEPTION = {"Natural Perception": "The way elven houses are built, respecting the natural form of trees and shelters, grants elves a special perception regarding unconventional and even secret doors and passages."}
-    RACIAL_TRAINING = {"Racial Training": "Elves are familiar with archery, which they consider a martial art, receiving a +1 bonus to damage dealt with ranged attacks using bows."}
+    RACIAL_WEAPON = {"Racial Weapon": "Elves are familiar with archery, which they consider a martial art, receiving a +1 bonus to damage dealt with ranged attacks using bows."}
     RESTRICTIONS = {"Restrictions": "As they have no tradition in armor forging, halflings only use leather armor, unless it is specially crafted for them."}
     SMALL = {"Small": "Due to their short stature and agility, all attacks from large or larger creatures are considered difficult attacks to hit a halfling."}
     STEALTHY = {"Stealthy": "Experts at hiding and going unnoticed, halflings can hide with a 1-2 chance on a 1d6 roll. If the halfling adopts the Thief class, they also gain a +1 bonus to their Stealth skill."}
