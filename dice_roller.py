@@ -1,7 +1,7 @@
 from random import randint
 
 class DiceRoller(): 
-    """Class responsible for rolling dice for the attributes generation."""
+    """Class responsible for rolling dice and showing them."""
     def __init__(self):
         self.__rolls = []
         
@@ -13,7 +13,7 @@ class DiceRoller():
         self.__rolls = rolls
     
     def roll(self, notation: str) -> None:
-        """Returns a list with random values according to the dice notation."""
+        """Generate a list with random values according to the dice notation."""
         split = notation.split('d')
         number_of_dice = int(split[0])
         faces_each_die = int(split[1])
@@ -24,3 +24,9 @@ class DiceRoller():
         print("Rolled dice: ", end='')
         for roll in self.rolls:
             print(f"[{roll}] ", end='')
+
+    def drop_lowest(self) -> None:
+        """Remove a lowest value in the list."""
+        lowest = min(self.rolls)
+        print(f"(One die [{lowest}] will be discarded) ", end='')
+        self.rolls.remove(lowest)
