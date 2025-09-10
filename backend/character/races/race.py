@@ -13,11 +13,9 @@ class Race(ABC):
     @property
     def movement(self) -> int:
         return self.__movement
-        
     @property
     def infravision(self) -> int:
         return self.__infravision
-
     @property
     def alignment(self) -> str:
         return self.__alignment

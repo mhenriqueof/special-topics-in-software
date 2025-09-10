@@ -1,6 +1,6 @@
 from time import sleep
-from dice_roller import DiceRoller
-from handy_functions import HandyFunctions as hf
+from ...dice_roller import DiceRoller
+from backend.handy_functions import HandyFunctions as hf
 
 class AttributeGenerator():
     """Class for attribute generation styles."""
@@ -25,17 +25,8 @@ class AttributeGenerator():
     @property
     def attribute_names(self) -> list:
         return self.__attribute_names
-
-    def generate_style(self, style: str) -> dict:
-        if style == 'Classic':
-            self.__attributes_distribution('3d6')
-        elif style == 'Adventure':
-            self.__attributes_distribution('3d6', choose=True)
-        elif style == 'Heroic':
-            self.__attributes_distribution('4d6', choose=True, drop_lowest=True)
-        return self.attributes
             
-    def __attributes_distribution(self, dice_notation: str, choose: bool=False, drop_lowest: bool=False) -> None:
+    def attributes_distribution(self, dice_notation: str, choose: bool=False, drop_lowest: bool=False) -> dict:
         """Responsible for managing the distribution of the dice results to the attributes."""
         while True:
             for attribute in self.attributes:                
@@ -63,7 +54,7 @@ class AttributeGenerator():
             # Ask if they liked the distribution
             correct = bool(hf.input_int("Do you like the distribution? [0] No, I want to try again. | [1] Yes. "))
             if correct:
-                break
+                return self.attributes
             else:
                 print("Resetting attributes...")
                 sleep(1)
