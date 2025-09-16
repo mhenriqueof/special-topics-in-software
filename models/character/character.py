@@ -46,8 +46,7 @@ class Character:
         elif value >= 9: return '0'
         elif value >= 6: return '-1'
         elif value >= 4: return '-2'
-        elif value >= 2: return '-3'
-        return '0'
+        else: return '-3'
 
     # Magic method 
     def __repr__(self) -> str:
