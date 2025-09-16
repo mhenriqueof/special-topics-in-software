@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character</title>
+</head>
+
+<body>
+    <h1>{{ character.name }} <> {{ character.race }} <> {{ character.klass }}</h1>
+
+    <h2>Attributes</h2>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+            <th>Modifier</th>
+        </tr>
+        {% for attribute, value in character.attributes.items() %}
+            <tr>
+                <td>{{ attribute }}</td>
+                <td>{{ value }}</td>
+                <td>{{ character.attribute_value_modifier(value) }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Talents</h2>
+    {% for name, desc in character.race.talents.items() %}
+        <h3>{{ name }}</h3>
+        <p>{{ desc }}</p>
+    {% endfor %}
+
+    <h2>Abilities</h2>
+    {% for name, desc in character.klass.abilities.items() %}
+        <h3>{{ name }}</h3>
+        <p>{{ desc }}</p>
+    {% endfor %}
+</body>
+
+</html>

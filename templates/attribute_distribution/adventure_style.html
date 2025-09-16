@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Creation - Attributes</title>
+</head>
+
+<body>
+    <h1>Adventure Distribution</h1>
+    <h2>Do you feel lucky today?</h2>
+
+    {% if all_rolls|length != attribute_names|length %}
+        {% if not rolls %}
+            <form action="{{ url_for('attributes_bp.roll_dice') }}" method="POST">
+                <button type="submit">Roll 3d6</button>
+            </form>
+        {% else %}
+            <p>
+                {% for roll in rolls %}  [{{ roll }}]  {% endfor %} → {{ total }}
+            </p>
+
+            <h2>Assign to:</h2>
+            <form action="{{ url_for('attributes_bp.assign_attribute') }}" method="POST">
+                {% for attribute in attribute_names %}
+                    {% if not all_total[attribute] %}
+                        <input type="radio" name="attribute" value="{{ attribute }}"> {{ attribute }} <br>
+                    {% endif %}
+                {% endfor %}
+                <br>
+                <button type="submit">Assign</button>
+            </form>
+        {% endif %}
+    {% endif %}
+    
+    {% for attribute in attribute_names %}
+        {% if all_total[attribute] %}
+            <p>
+                {{ attribute }} → 
+                {% for roll in all_rolls[attribute] %}  [{{ roll }}]  {% endfor %} → 
+                {{ all_total[attribute] }}
+            </p>
+        {% endif %}
+    {% endfor %}
+
+    {% if all_rolls|length == attribute_names|length %}
+        <form action="{{ url_for('attributes_bp.create_character_attributes') }}" method="POST">
+            <button type="submit">Let's choose the Race</button>
+        </form>
+    {% endif %}
+</body>
+
+</html>

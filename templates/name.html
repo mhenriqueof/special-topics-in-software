@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Creation - Name</title>
+</head>
+
+<body>
+    <h1>Name</h1>
+    <form action="{{ url_for('name_bp.choose_name') }}" method="POST">
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" placeholder="Ex.: Tancredo" required><br>
+        <br>
+        <button type="submit">Let's create the Character</button>
+    </form>
+</body>
+
+</html>
