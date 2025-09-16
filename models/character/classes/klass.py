@@ -4,6 +4,7 @@ from .utils.armors import Armor
 from .utils.magic_items import MagicItem
 
 class Klass(ABC): # "K" to avoid 'class' of Python
+    """Abstract class for all classes of the game."""
     def __init__(self, weapon: list[str], armor: list[str], magic_items: list[str]):
         self.__weapon = weapon
         self.__armor = armor

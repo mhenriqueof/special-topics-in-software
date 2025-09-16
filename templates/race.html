@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Creation - Race</title>
+</head>
+
+<body>
+    <h1>Race</h1>
+    <form action="{{ url_for('race_bp.choose_race') }}" method="POST">
+        <input type="radio" name="race" value="Elf" required> Elf <br>
+        <input type="radio" name="race" value="Halfling"> Halfling <br>
+        <input type="radio" name="race" value="Human"> Human <br>
+        <br>
+        <button type="submit">Let's choose the Class</button>
+    </form>
+
+    <div id="elf-info" style="display:none;">
+        <h2>Profile</h2>
+        {% for name, desc in elf.profile.items() %}
+            <p>{{ desc }}</p>
+        {% endfor %}
+        <h2>Talents</h2>
+        {% for name, desc in elf.talents.items() %}
+            <h3>{{ name }}</h3>
+            <p>{{ desc }}</p>
+        {% endfor %}
+    </div>
+
+    <div id="halfling-info" style="display:none;">
+        <h2>Profile</h2>
+        {% for name, desc in halfling.profile.items() %}
+            <p>{{ desc }}</p>
+        {% endfor %}
+        <h2>Talents</h2>
+        {% for name, desc in halfling.talents.items() %}
+            <h3>{{ name }}</h3>
+            <p>{{ desc }}</p>
+        {% endfor %}
+    </div>
+
+    <div id="human-info" style="display:none;">
+        <h2>Profile</h2>
+        {% for name, desc in human.profile.items() %}
+            <p>{{ desc }}</p>
+        {% endfor %}
+        <h2>Talents</h2>
+        {% for name, desc in human.talents.items() %}
+            <h3>{{ name }}</h3>
+            <p>{{ desc }}</p>
+        {% endfor %}
+    </div>
+
+    <script>
+        document.querySelectorAll('input[name="race"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            document.getElementById('elf-info').style.display = radio.value === 'Elf' ? 'block' : 'none';
+            document.getElementById('halfling-info').style.display = radio.value === 'Halfling' ? 'block' : 'none';
+            document.getElementById('human-info').style.display = radio.value === 'Human' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>

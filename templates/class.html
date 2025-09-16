@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Creation - Class</title>
+</head>
+
+<body>
+    <h1>Class</h1>
+    <form action="{{ url_for('class_bp.choose_class') }}" method="POST">
+        <input type="radio" name="class" value="Mage" required > Mage <br>
+        <input type="radio" name="class" value="Thief"> Thief <br>
+        <input type="radio" name="class" value="Warrior"> Warrior <br>
+        <br>
+        <button type="submit">Let's choose the Name</button>
+    </form>
+
+    <div id="mage-info" style="display:none;">
+        <h2>Arc</h2>
+        <p>{{ mage.arc }}</p>
+        <h2>Abilities</h2>
+        {% for name, desc in mage.abilities.items() %}
+            <h3>{{ name }}</h3>
+            <p>{{ desc }}</p>
+        {% endfor %}
+    </div>
+
+    <div id="thief-info" style="display:none;">
+        <h2>Arc</h2>
+        <p>{{ thief.arc }}</p>
+        <h2>Abilities</h2>
+        {% for name, desc in thief.abilities.items() %}
+            <h3>{{ name }}</h3>
+            <p>{{ desc }}</p>
+        {% endfor %}
+    </div>
+
+    <div id="warrior-info" style="display:none;">
+        <h2>Arc</h2>
+        <p>{{ warrior.arc }}</p>
+        <h2>Abilities</h2>
+        {% for name, desc in warrior.abilities.items() %}
+            <h3>{{ name }}</h3>
+            <p>{{ desc }}</p>
+        {% endfor %}
+    </div>
+
+    <script>
+        document.querySelectorAll('input[name="class"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                document.getElementById('mage-info').style.display = radio.value === 'Mage' ? 'block' : 'none';
+                document.getElementById('thief-info').style.display = radio.value === 'Thief' ? 'block' : 'none';
+                document.getElementById('warrior-info').style.display = radio.value === 'Warrior' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>

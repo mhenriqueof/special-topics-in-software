@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Creation - Attributes</title>
+</head>
+
+<body>
+    <h1>Style of Attribute Distribution</h1>
+    <form action="{{ url_for('attributes_bp.choose_distribution_style') }}" method="POST">
+        <label>
+            <input type="radio" name="style" value="Classic" required>
+            Classic - Roll 3d6 (three six-sided dice) for each attribute (Charisma, Constitution, Dexterity, Intelligence, Strength and Wisdom).<br>
+        </label>
+
+        <label>
+            <input type="radio" name="style" value="Adventure">
+            Adventure - Roll 3d6 six times and assign freely.<br>
+        </label>
+
+        <label>
+            <input type="radio" name="style" value="Heroic">
+            Heroic - Roll 4d6 six times (each time the lowest die in the rolls is discarded) and assign freely.<br>
+        </label>
+        <br>
+        <button type="submit">Let's generate the Attributes</button>
+    </form>
+</body>
+
+</html>
