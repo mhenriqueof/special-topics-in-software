@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>Heroic Distribution</h1>
+    <h1>{{ 'Adventure' if style == 'Adventure' else 'Heroic' }} Distribution</h1>
     <h2>Do you feel lucky today?</h2>
 
     {% if all_rolls|length != attribute_names|length %}
