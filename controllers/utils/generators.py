@@ -4,7 +4,7 @@ from models.character.classes import Mage, Thief, Warrior
 from models.character.character import Character
 
 class Generator:
-    """Class with methods that are used often."""
+    """Class with methods to instantiate classes."""
     
     @staticmethod
     def generate_dice_rolls(style: str) -> list[int]:
