@@ -14,11 +14,14 @@
     {% if all_rolls|length != attribute_names|length %}
         {% if not rolls %}
             <form action="{{ url_for('attributes_bp.roll_dice') }}" method="POST">
-                <button type="submit">Roll 4d6</button>
+                <button type="submit">Roll {{ '3d6' if style == 'Adventure' else '4d6' }}</button>
             </form>
         {% else %}
             <p>
-                {% for roll in rolls %}  [{{ roll }}]  {% endfor %} (One die [{{ rolls|min }}] will be discarded) → {{ total }}
+                {% for roll in rolls %}  [{{ roll }}]  {% endfor %}  → {{ total }} 
+                {% if style == 'Heroic' %}
+                    (One die [{{ rolls|min }}] will be discarded)
+                {% endif %}
             </p>
 
             <h2>Assign to:</h2>
