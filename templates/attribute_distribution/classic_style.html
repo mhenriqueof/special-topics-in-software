@@ -18,9 +18,7 @@
                 <button type="submit">Roll 3d6 for {{ attribute }}</button>
                 <br><br>
             </form>
-        {% endif %}
-
-        {% if all_rolls[attribute] %}
+        {% else %}
             <p>
                 {{ attribute }} → 
                 {% for roll in all_rolls[attribute] %}  [{{ roll }}]  {% endfor %} → 
