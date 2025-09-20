@@ -18,6 +18,10 @@
     </form>
 
     <div id="elf-info" style="display:none;">
+        <h2>Traits</h2>
+            <p>Movement: {{ elf.movement }} meters</p>
+            <p>Infravision: {{ elf.infravision }} meters</p>
+            <p>Alignment: {{ elf.alignment }}</p>
         <h2>Profile</h2>
         {% for name, desc in elf.profile.items() %}
             <p>{{ desc }}</p>
@@ -28,7 +32,12 @@
             <p>{{ desc }}</p>
         {% endfor %}
     </div>
+
     <div id="halfling-info" style="display:none;">
+        <h2>Traits</h2>
+            <p>Movement: {{ halfling.movement }} meters</p>
+            <p>Infravision: {{ halfling.infravision }} meters</p>
+            <p>Alignment: {{ halfling.alignment }}</p>
         <h2>Profile</h2>
         {% for name, desc in halfling.profile.items() %}
             <p>{{ desc }}</p>
@@ -39,7 +48,12 @@
             <p>{{ desc }}</p>
         {% endfor %}
     </div>
+    
     <div id="human-info" style="display:none;">
+        <h2>Traits</h2>
+            <p>Movement: {{ human.movement }} meters</p>
+            <p>Infravision: {{ human.infravision }} meters</p>
+            <p>Alignment: {{ human.alignment }}</p>
         <h2>Profile</h2>
         {% for name, desc in human.profile.items() %}
             <p>{{ desc }}</p>
