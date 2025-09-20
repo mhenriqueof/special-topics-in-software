@@ -26,6 +26,16 @@
         {% endfor %}
     </table>
 
+    <h2>Traits</h2>
+        <p>Movement: {{ character.race.movement }} meters</p>
+        <p>Infravision: {{ character.race.infravision }} meters</p>
+        <p>Alignment: {{ character.race.alignment }}</p>
+
+    <h2>Equipment</h2>
+        <p>Weapon {% for weapon in character.klass.weapon %} - {{ weapon }}  {% endfor %}</p>
+        <p>Armor {% for armor in character.klass.armor %} - {{ armor }}  {% endfor %}</p>
+        <p>Magic items {% for magic_items in character.klass.magic_items %} - {{ magic_items }}  {% endfor %}</p>
+
     <h2>Talents</h2>
     {% for name, desc in character.race.talents.items() %}
         <h3>{{ name }}</h3>
