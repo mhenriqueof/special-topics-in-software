@@ -8,13 +8,9 @@ def choose_distribution_style():
     if request.method == 'POST':
         session.clear()
         session['attribute_names'] = ['CHA (Charisma)', 'CON (Constitution)', 'DEX (Dexterity)',
-                                  'INT (Intelligence)', 'STR (Strength)', 'WIS (Wisdom)']
-        style = request.form.get('style')
+                                      'INT (Intelligence)', 'STR (Strength)', 'WIS (Wisdom)']
+        style = request.form.get('style', '')
         session['style'] = style
-        if style == 'Classic':
-            session['html_file'] = 'classic_style.html'
-        elif style == 'Adventure' or style == 'Heroic':
-            session['html_file'] = 'adventure_heroic_style.html'
         return redirect(url_for('attributes_bp.attribute_distribution'))
     return render_template('attributes.html')
 
@@ -26,7 +22,9 @@ def attribute_distribution():
     rolls = session.get('rolls', [])
     total = session.get('total', int)
     style = session.get('style', '')
-    html_file = session.get('html_file', '')
+    html_file = 'classic_style.html'
+    if style == 'Adventure' or style == 'Heroic':
+        html_file = 'adventure_heroic_style.html'
     return render_template(f'attribute_distribution/{html_file}',
                            attribute_names=attribute_names, all_rolls=all_rolls, all_total=all_total,
                            rolls=rolls, total=total, style=style)
@@ -41,21 +39,19 @@ def roll_dice():
 
 @attributes_bp.route('/attribute_distribution/assign_attribute', methods=['POST'])
 def assign_attribute():
-    all_rolls = session.get('all_rolls', {})
-    all_total = session.get('all_total', {})
     style = session.get('style', '')
-    if style == 'Classic': # i couldn't do: button -> roll_dice() -> assign_attribute(), because of "Method Not Allowed" error
+    rolls = session.get('rolls', [])
+    total = session.get('total', int)
+    if style == 'Heroic':
+        rolls.remove(min(rolls))
+        total = sum(rolls)
+    elif style == 'Classic': # i couldn't do: button -> roll_dice() -> assign_attribute(), because of "Method Not Allowed" error
         rolls = Generator.generate_dice_rolls(style)
         total = sum(rolls)
-    else:
-        rolls = session.get('rolls', [])
-        total = session.get('total', int)
-        if style == 'Heroic':
-            rolls.remove(min(rolls))
-            total = sum(rolls)
-    
-    attribute = request.form['attribute']
 
+    attribute = request.form.get('attribute', '')
+    all_rolls = session.get('all_rolls', {})
+    all_total = session.get('all_total', {})
     all_rolls[attribute] = rolls
     all_total[attribute] = total
 
