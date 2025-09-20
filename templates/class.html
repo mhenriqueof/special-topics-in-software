@@ -18,6 +18,10 @@
     </form>
 
     <div id="mage-info" style="display:none;">
+        <h2>Equipment</h2>
+            <p>Weapon {% for weapon in mage.weapon %} - {{ weapon }}  {% endfor %}</p>
+            <p>Armor {% for armor in mage.armor %} - {{ armor }}  {% endfor %}</p>
+            <p>Magic items {% for magic_items in mage.magic_items %} - {{ magic_items }}  {% endfor %}</p>
         <h2>Arc</h2>
         <p>{{ mage.arc }}</p>
         <h2>Abilities</h2>
@@ -26,7 +30,12 @@
             <p>{{ desc }}</p>
         {% endfor %}
     </div>
+
     <div id="thief-info" style="display:none;">
+        <h2>Equipment</h2>
+            <p>Weapon {% for weapon in thief.weapon %} - {{ weapon }}  {% endfor %}</p>
+            <p>Armor {% for armor in thief.armor %} - {{ armor }}  {% endfor %}</p>
+            <p>Magic items {% for magic_items in thief.magic_items %} - {{ magic_items }}  {% endfor %}</p>
         <h2>Arc</h2>
         <p>{{ thief.arc }}</p>
         <h2>Abilities</h2>
@@ -35,7 +44,12 @@
             <p>{{ desc }}</p>
         {% endfor %}
     </div>
+    
     <div id="warrior-info" style="display:none;">
+        <h2>Equipment</h2>
+            <p>Weapon {% for weapon in warrior.weapon %} - {{ weapon }}  {% endfor %}</p>
+            <p>Armor {% for armor in warrior.armor %} - {{ armor }}  {% endfor %}</p>
+            <p>Magic items {% for magic_items in warrior.magic_items %} - {{ magic_items }}  {% endfor %}</p>
         <h2>Arc</h2>
         <p>{{ warrior.arc }}</p>
         <h2>Abilities</h2>
