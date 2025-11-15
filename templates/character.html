@@ -10,6 +10,10 @@
 <body>
     <h1>{{ character.name }} <> {{ character.race }} <> {{ character.klass }}</h1>
 
+    <form method="POST" action="{{ url_for('character_bp.save_character') }}">
+        <button type="submit">Save Character</button>
+    </form>
+
     <h2>Attributes</h2>
     <table border="1" cellpadding="5">
         <tr>
@@ -32,9 +36,9 @@
         <p>Alignment: {{ character.race.alignment }}</p>
 
     <h2>Equipment</h2>
-        <p>Weapon {% for weapon in character.klass.weapon %} - {{ weapon }}  {% endfor %}</p>
-        <p>Armor {% for armor in character.klass.armor %} - {{ armor }}  {% endfor %}</p>
-        <p>Magic items {% for magic_items in character.klass.magic_items %} - {{ magic_items }}  {% endfor %}</p>
+        <p>Weapon: {% for weapon in character.klass.weapon %} {{ weapon }}  {% endfor %}</p>
+        <p>Armor: {% for armor in character.klass.armor %} {{ armor }}  {% endfor %}</p>
+        <p>Magic Items: {% for magic_item in character.klass.magic_items %} {{ magic_item }}  {% endfor %}</p>
 
     <h2>Talents</h2>
     {% for name, desc in character.race.talents.items() %}
